@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Serif:wght@600&display=swap" rel="stylesheet">
+    <title>Clock</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            background-color: black;
+        }
+
+        #Clock {
+            color: white;
+            font-size: 4rem;
+            font-family: 'Roboto Serif', sans-serif;
+            text-align: center;
+            transform:translateY(50vh);
+            
+        }
+        #Day{
+            color: white;
+            font-size: 2rem;
+            font-family: 'Roboto Serif', sans-serif;
+            text-align: center;
+            transform: translate( -7rem, 50vh);
+        }
+    </style>
+</head>
+
+<body>
+    <div >
+        <p id="Day"></p>
+        <p id="Clock"></p>
+
+    </div>
+    <script>
+        function timer() {
+            var date = new Date();
+            var h = date.getHours();
+            var m = date.getMinutes();
+            var s = date.getSeconds();
+            var day = date.getDay();
+            switch(day){
+                case 1 : 
+                day = "Monday";
+                break;
+                case 2: 
+                day= "Tuesday";
+                break;
+                case 3: 
+                day= "Wednesday";
+                break;
+                case 4:
+                day="Thrusday";
+                break;
+                case 5:
+                day="Friday";
+                break;
+                case 6:
+                day= "Satarday";
+                break;
+                case 0:
+                day="Sunday";
+                break;
+                default:
+                 day = "Monday";
+            }
+            var a = "AM";
+            // h = (h<10) ? "0"+h : h;
+            h = (h > 12) ? h - 12 : h;
+            m = (m < 10) ? "0" + m : m;
+            s = (s < 10) ? "0" + s : s;
+            a = (h > 12) ? "AM" : "PM";
+
+            var time = h + ":" + m + ":" + s + " " + a;
+            document.getElementById("Day").innerText = day;
+            document.getElementById("Clock").innerText = time;
+        }
+        timer();
+        setInterval(timer, 1000);
+    </script>
+</body>
+
+</html>
